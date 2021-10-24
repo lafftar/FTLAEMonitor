@@ -1,0 +1,52 @@
+[2021-10-24 13:36:57,227] [utils.custom_logger] [ERROR]: [BASE PLAYWRIGHT] : Either proxy or connection refused error - NS_ERROR_PROXY_FORBIDDEN
+=========================== logs ===========================
+navigating to "https://browserleaks.com/ip", waiting until "load"
+============================================================ 
+	[base.py:26)]
+
+[2021-10-24 13:36:57,665] [utils.custom_logger] [ERROR]: [BASE PLAYWRIGHT] : Either proxy or connection refused error - NS_ERROR_PROXY_FORBIDDEN
+=========================== logs ===========================
+navigating to "https://browserleaks.com/ip", waiting until "load"
+============================================================ 
+	[base.py:26)]
+
+[2021-10-24 16:05:52,473] [utils.custom_logger] [ERROR]: [Task 0] : Webhook Failed 
+	[base.py:35)]
+Traceback (most recent call last):
+  File "C:\Users\lafft\PycharmProjects\FTLAEMonitor\utils\webhook.py", line 32, in send_webhook
+    await webhook.send(username='FTL.AE Monitor',
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 266, in handle_execution_response
+    data = await response
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 221, in request
+    async with self.session.request(verb, url, headers=headers, data=data) as r:
+AttributeError: __aenter__
+[2021-10-24 16:05:52,474] [utils.custom_logger] [ERROR]: [Task 0] : Webhook Failed 
+	[base.py:35)]
+Traceback (most recent call last):
+  File "C:\Users\lafft\PycharmProjects\FTLAEMonitor\utils\webhook.py", line 32, in send_webhook
+    await webhook.send(username='FTL.AE Monitor',
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 266, in handle_execution_response
+    data = await response
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 221, in request
+    async with self.session.request(verb, url, headers=headers, data=data) as r:
+AttributeError: __aenter__
+[2021-10-24 16:05:54,482] [utils.custom_logger] [ERROR]: [Task 0] : Webhook Failed 
+	[base.py:35)]
+Traceback (most recent call last):
+  File "C:\Users\lafft\PycharmProjects\FTLAEMonitor\utils\webhook.py", line 32, in send_webhook
+    await webhook.send(username='FTL.AE Monitor',
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 266, in handle_execution_response
+    data = await response
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 221, in request
+    async with self.session.request(verb, url, headers=headers, data=data) as r:
+AttributeError: __aenter__
+[2021-10-24 16:05:54,487] [utils.custom_logger] [ERROR]: [Task 0] : Webhook Failed 
+	[base.py:35)]
+Traceback (most recent call last):
+  File "C:\Users\lafft\PycharmProjects\FTLAEMonitor\utils\webhook.py", line 32, in send_webhook
+    await webhook.send(username='FTL.AE Monitor',
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 266, in handle_execution_response
+    data = await response
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 221, in request
+    async with self.session.request(verb, url, headers=headers, data=data) as r:
+AttributeError: __aenter__

@@ -1,0 +1,188 @@
+[2021-10-24 13:35:52,223] [utils.custom_logger] [DEBUG]: [BASE PLAYWRIGHT] : Set Random Proxy
+		[http://154.202.96.188:3128] 
+	[base.py:32)]
+
+[2021-10-24 13:35:52,225] [utils.custom_logger] [DEBUG]: 
+	[PLAYWRIGHT BROWSER HANDLER]
+	[0 Total Browsers | N/A Contexts for Current Browser]
+		[Message]: Browser is None 
+	[base.py:32)]
+
+[2021-10-24 13:35:52,226] [utils.custom_logger] [DEBUG]: [BASE PLAYWRIGHT] : Set Random Proxy
+		[http://154.202.120.204:3128] 
+	[base.py:32)]
+
+[2021-10-24 13:35:52,227] [utils.custom_logger] [DEBUG]: 
+	[PLAYWRIGHT BROWSER HANDLER]
+	[0 Total Browsers | N/A Contexts for Current Browser]
+		[Message]: Browser is None 
+	[base.py:32)]
+
+[2021-10-24 13:36:49,071] [utils.custom_logger] [DEBUG]: [BASE PLAYWRIGHT] : Set Random Proxy
+		[http://154.202.96.184:3128] 
+	[base.py:32)]
+
+[2021-10-24 13:36:49,076] [utils.custom_logger] [DEBUG]: 
+	[PLAYWRIGHT BROWSER HANDLER]
+	[0 Total Browsers | N/A Contexts for Current Browser]
+		[Message]: Browser is None 
+	[base.py:32)]
+
+[2021-10-24 13:36:49,077] [utils.custom_logger] [DEBUG]: [BASE PLAYWRIGHT] : Set Random Proxy
+		[http://154.84.143.30:3128] 
+	[base.py:32)]
+
+[2021-10-24 13:36:55,623] [utils.custom_logger] [DEBUG]: 
+	[PLAYWRIGHT BROWSER HANDLER]
+	[0 Total Browsers | 0 Contexts for Current Browser]
+		[Message]: New Browser Launched 
+	[base.py:32)]
+
+[2021-10-24 13:36:55,648] [utils.custom_logger] [DEBUG]: 
+	[PLAYWRIGHT BROWSER HANDLER]
+	[1 Total Browsers | 1 Contexts for Current Browser]
+		[Message]: New Context Created. 
+	[base.py:32)]
+
+[2021-10-24 13:36:55,663] [utils.custom_logger] [DEBUG]: 
+	[PLAYWRIGHT BROWSER HANDLER]
+	[1 Total Browsers | 2 Contexts for Current Browser]
+		[Message]: New Context Created. 
+	[base.py:32)]
+
+[2021-10-24 13:36:56,946] [utils.custom_logger] [DEBUG]: [BASE PLAYWRIGHT] : Going to https://browserleaks.com/ip 
+	[base.py:32)]
+
+[2021-10-24 13:36:56,950] [utils.custom_logger] [DEBUG]: [BASE PLAYWRIGHT] : Going to https://browserleaks.com/ip 
+	[base.py:32)]
+
+[2021-10-24 13:36:57,227] [utils.custom_logger] [ERROR]: [BASE PLAYWRIGHT] : Either proxy or connection refused error - NS_ERROR_PROXY_FORBIDDEN
+=========================== logs ===========================
+navigating to "https://browserleaks.com/ip", waiting until "load"
+============================================================ 
+	[base.py:26)]
+
+[2021-10-24 13:36:57,262] [utils.custom_logger] [DEBUG]: [BASE PLAYWRIGHT] : Going to https://browserleaks.com/ip 
+	[base.py:32)]
+
+[2021-10-24 13:36:57,665] [utils.custom_logger] [ERROR]: [BASE PLAYWRIGHT] : Either proxy or connection refused error - NS_ERROR_PROXY_FORBIDDEN
+=========================== logs ===========================
+navigating to "https://browserleaks.com/ip", waiting until "load"
+============================================================ 
+	[base.py:26)]
+
+[2021-10-24 13:37:01,965] [utils.custom_logger] [DEBUG]: [BASE PLAYWRIGHT] : Going to https://browserleaks.com/ip 
+	[base.py:32)]
+
+[2021-10-24 13:43:21,315] [utils.custom_logger] [INFO]: 
+	[PLAYWRIGHT BROWSER HANDLER]
+	[0 Total Browsers | N/A Contexts for Current Browser]
+		[Message]: All Browsers Closed 
+	[base.py:23)]
+
+[2021-10-24 14:25:31,023] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:31,236] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:31,431] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:31,551] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:31,713] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:31,891] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:32,061] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:32,177] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:32,311] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:32,565] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:32,706] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:32,964] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:33,113] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:33,270] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:33,401] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:33,516] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:25:33,680] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 14:27:48,103] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 16:05:52,416] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 16:05:52,473] [utils.custom_logger] [ERROR]: [Task 0] : Webhook Failed 
+	[base.py:35)]
+Traceback (most recent call last):
+  File "C:\Users\lafft\PycharmProjects\FTLAEMonitor\utils\webhook.py", line 32, in send_webhook
+    await webhook.send(username='FTL.AE Monitor',
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 266, in handle_execution_response
+    data = await response
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 221, in request
+    async with self.session.request(verb, url, headers=headers, data=data) as r:
+AttributeError: __aenter__
+[2021-10-24 16:05:52,474] [utils.custom_logger] [ERROR]: [Task 0] : Webhook Failed 
+	[base.py:35)]
+Traceback (most recent call last):
+  File "C:\Users\lafft\PycharmProjects\FTLAEMonitor\utils\webhook.py", line 32, in send_webhook
+    await webhook.send(username='FTL.AE Monitor',
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 266, in handle_execution_response
+    data = await response
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 221, in request
+    async with self.session.request(verb, url, headers=headers, data=data) as r:
+AttributeError: __aenter__
+[2021-10-24 16:05:54,482] [utils.custom_logger] [ERROR]: [Task 0] : Webhook Failed 
+	[base.py:35)]
+Traceback (most recent call last):
+  File "C:\Users\lafft\PycharmProjects\FTLAEMonitor\utils\webhook.py", line 32, in send_webhook
+    await webhook.send(username='FTL.AE Monitor',
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 266, in handle_execution_response
+    data = await response
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 221, in request
+    async with self.session.request(verb, url, headers=headers, data=data) as r:
+AttributeError: __aenter__
+[2021-10-24 16:05:54,487] [utils.custom_logger] [ERROR]: [Task 0] : Webhook Failed 
+	[base.py:35)]
+Traceback (most recent call last):
+  File "C:\Users\lafft\PycharmProjects\FTLAEMonitor\utils\webhook.py", line 32, in send_webhook
+    await webhook.send(username='FTL.AE Monitor',
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 266, in handle_execution_response
+    data = await response
+  File "C:\Users\lafft\AppData\Roaming\Python\Python39\site-packages\discord\webhook.py", line 221, in request
+    async with self.session.request(verb, url, headers=headers, data=data) as r:
+AttributeError: __aenter__
+[2021-10-24 16:06:12,662] [utils.custom_logger] [DEBUG]: [Task 0] : Checked - 200 
+	[base.py:32)]
+
+[2021-10-24 16:06:12,966] [utils.custom_logger] [INFO]: [Task 0] : Sent Webhook 
+	[base.py:23)]
+
+[2021-10-24 16:06:12,976] [utils.custom_logger] [INFO]: [Task 0] : Sent Webhook 
+	[base.py:23)]
+
