@@ -3,7 +3,7 @@ from asyncio import sleep
 from discord import Colour, Embed, AsyncWebhookAdapter, Webhook
 
 
-async def send_webhook(caller, url, webhook_client, message='NO_REPEAT'):
+async def send_webhook(caller, url, message='NO_REPEAT'):
     # sending webhook
     webhook = Webhook.from_url(
         url=url,

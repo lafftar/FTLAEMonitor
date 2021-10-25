@@ -3,6 +3,7 @@ import functools
 import sys
 from asyncio import sleep
 from json import dumps, JSONDecodeError
+from os import system
 from time import sleep as sync_sleep
 from typing import Union
 
@@ -17,6 +18,7 @@ from utils.root import get_project_root
 from utils.global_vars import GLOBAL
 
 init()
+system("cls")
 FIRST_PRINT = False
 FAKE = Faker()
 
@@ -82,7 +84,7 @@ async def send_req(req_obj: functools.partial, num_tries: int = 1) -> \
             return item
         except (httpx.ConnectTimeout, httpx.ProxyError, httpx.ConnectError,
                 httpx.ReadError, httpx.ReadTimeout, httpx.WriteTimeout, httpx.RemoteProtocolError,
-                httpcore._async.base.NewConnectionRequired,
+                httpx.ProxyError,
 
                 # aiohttp errors
                 asyncio.exceptions.TimeoutError, client_exceptions.ClientHttpProxyError,
@@ -95,7 +97,7 @@ async def send_req(req_obj: functools.partial, num_tries: int = 1) -> \
 
 
 def update_title(terminal_title):
-    bot_name = 'VMS Monitor'
+    bot_name = 'FTL.AE Monitor'
     if sys.platform == 'linux':
         print(f'\33]0;[{bot_name}] | {terminal_title}\a', end='', flush=True)
     if sys.platform == 'win32':
@@ -129,5 +131,5 @@ def auth():
         raise KeyboardInterrupt
     name = license_data['metadata']['Name']
     if not FIRST_PRINT:
-        print(f'{Fore.LIGHTBLUE_EX}Hello {name}. Your key is valid. You are allowed unlimited instances.')
+        print(f'\n\n{Fore.LIGHTBLUE_EX}Hello {name}. Your key is valid. You are allowed unlimited instances.\n\n')
         FIRST_PRINT = True

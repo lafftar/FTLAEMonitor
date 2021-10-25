@@ -1,0 +1,13 @@
+
+*.pyc
+*.log
+*.spec
+*.exe
+*.ico
+*.html
+*.toc
+*.pkg
+*.pyz
+*.manifest
+*.xml
+*.xml
