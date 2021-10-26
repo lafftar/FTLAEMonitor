@@ -1,0 +1,18 @@
+{
+    "results": [
+        {
+            "hits": [],
+            "nbHits": 652,
+            "page": 1,
+            "nbPages": 1,
+            "hitsPerPage": 999,
+            "exhaustiveNbHits": true,
+            "exhaustiveTypo": true,
+            "query": "",
+            "queryAfterRemoval": "",
+            "params": "query=&hitsPerPage=999&page=1&filters=(field_category_name.lvl1: \"Men's > Shoes\") OR(field_category_name.lvl1: \"Women's > Shoes\") OR(field_category_name.lvl2: \"Kids' > 8+ Years > Shoes\") OR(field_category_name.lvl2: \"Kids' > 4 to 8 Years > Shoes\") OR(field_category_name.lvl2: \"Kids' > Upto 4 Years > Shoes\")",
+            "index": "01live_flae_en",
+            "processingTimeMS": 1
+        }
+    ]
+}

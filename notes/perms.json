@@ -1,0 +1,11 @@
+{
+    "value": "2da2a6f7496eed8347cd476da1a006b0",
+    "createdAt": 1578392115,
+    "acl": [
+        "search",
+        "listIndexes",
+        "settings"
+    ],
+    "validity": 0,
+    "description": "Search API Key for nikunj.kotecha@qed42.com"
+}

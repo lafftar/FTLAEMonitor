@@ -29,7 +29,12 @@ def print_req_info(res: httpx.Response, print_headers: bool = False, print_body:
         return
 
     with open(f'{get_project_root()}/src.html', mode='w', encoding='utf-8') as file:
-        file.write(res.text)
+        try:
+            with open(f'{get_project_root()}/src.json', mode='w', encoding='utf-8') as file:
+                file.write(dumps(res.json(), indent=4))
+                print('wrote json')
+        except JSONDecodeError:
+            file.write(res.text)
     if not print_headers:
         return
 
