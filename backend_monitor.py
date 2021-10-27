@@ -1,19 +1,14 @@
 import asyncio
 from copy import deepcopy
-from datetime import datetime
-from json import loads, load, dumps
-from pprint import pprint
-from time import sleep
+from asyncio import sleep
 
 import aiohttp
-from colorama import Fore, init
-
 import httpx
-import requests
+from colorama import init
 
 from utils.custom_logger import logger
 from utils.global_vars import GLOBAL
-from utils.tools import print_req_info
+from utils.tools import print_req_info, auth, update_title
 from utils.webhook import send_webhook
 
 init()
@@ -187,15 +182,26 @@ async def check():
                                  )
 
     H.old_results = current
-    logger().debug(f'Checked. {len(H.old_results)}')
+    logger().debug(f'Checked. {len(H.old_results)} shoes loaded on backend.')
     return
 
 
-async def run():
+async def check_auth():
+    while True:
+        auth()
+        await sleep(60)
+
+
+async def check_forever():
     while True:
         await check()
-        sleep(30)
+        await sleep(30)
+
+
+async def run():
+    await asyncio.gather(check_auth(), check_forever())
 
 
 if __name__ == "__main__":
+    update_title('Running.')
     asyncio.run(run())
