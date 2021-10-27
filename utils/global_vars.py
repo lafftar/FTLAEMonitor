@@ -1,7 +1,7 @@
 import asyncio
 from os import makedirs, listdir
 
-import win32file
+# import win32file
 
 from utils.root import get_project_root
 
@@ -53,8 +53,8 @@ class Global:
             self.reminder_timeout = int(settings['REMINDER_TIMEOUT'])
 
         # increase limits
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-        win32file._setmaxstdio(8192)
+        # asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+        # win32file._setmaxstdio(8192)
 
 
 GLOBAL = Global()

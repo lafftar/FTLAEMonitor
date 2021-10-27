@@ -1,0 +1,387 @@
+{
+    "minWordSizefor1Typo": 4,
+    "minWordSizefor2Typos": 8,
+    "hitsPerPage": 20,
+    "maxValuesPerFacet": 100,
+    "version": 1,
+    "searchableAttributes": [
+        "unordered(title)",
+        "unordered(lhn_category.lvl2)",
+        "unordered(attr_product_brand)",
+        "unordered(lhn_category.lvl1)",
+        "unordered(lhn_category.lvl0)",
+        "unordered(attr_material)",
+        "unordered(attr_color_family.value)",
+        "unordered(attr_gender)",
+        "unordered(sku)"
+    ],
+    "numericAttributesToIndex": null,
+    "attributesToRetrieve": null,
+    "ignorePlurals": true,
+    "removeStopWords": [
+        "en"
+    ],
+    "unretrievableAttributes": null,
+    "optionalWords": null,
+    "replicas": [
+        "01live_flae_en_title_asc",
+        "01live_flae_en_title_desc",
+        "01live_flae_en_final_price_asc",
+        "01live_flae_en_final_price_desc",
+        "01live_flae_en_created_desc",
+        "01live_flae_en_changed_asc"
+    ],
+    "attributesForFaceting": [
+        "searchable(attr_color_family)",
+        "attr_gender",
+        "attr_material",
+        "attr_product_brand",
+        "attr_product_collection",
+        "attr_selling_price",
+        "attr_size_bras",
+        "attr_size_rest",
+        "attr_size_shoe_eu",
+        "attr_size_socks",
+        "attr_size_textile_eu",
+        "field_acq_promotion_label",
+        "field_category",
+        "field_category_name",
+        "field_category_name.lvl0",
+        "field_category_name.lvl1",
+        "field_category_name.lvl2",
+        "final_price",
+        "lhn_category",
+        "new_arrivals",
+        "promotion_nid",
+        "title",
+        "attr_delivery_ways"
+    ],
+    "attributesToSnippet": null,
+    "attributesToHighlight": null,
+    "paginationLimitedTo": 2000,
+    "attributeForDistinct": null,
+    "disableTypoToleranceOnWords": [],
+    "exactOnSingleWordQuery": "word",
+    "disableTypoToleranceOnAttributes": [
+        "sku"
+    ],
+    "synonyms": [
+        [
+            "Football",
+            "soccer"
+        ],
+        [
+            "aj1",
+            "air jordan 1"
+        ],
+        [
+            "j1",
+            "air jordan 1"
+        ],
+        [
+            "af1 ",
+            "air force 1"
+        ],
+        [
+            "onitsuka",
+            "shoes"
+        ],
+        [
+            "skechers",
+            "shoes"
+        ],
+        [
+            "grinch",
+            "nike"
+        ],
+        [
+            "court purple",
+            "nike"
+        ],
+        [
+            "metcon",
+            "nike"
+        ],
+        [
+            "janoski",
+            "nike"
+        ],
+        [
+            "sb",
+            "nike"
+        ],
+        [
+            "kobe",
+            "nike"
+        ],
+        [
+            "cortez",
+            "nike"
+        ],
+        [
+            "slipper",
+            " slippers",
+            " slide",
+            " slides",
+            " flipflop",
+            " flipflops",
+            " flip flop",
+            " flip flops",
+            " sandal",
+            " sandals"
+        ],
+        [
+            " jacket",
+            " jackets"
+        ],
+        [
+            "jogger",
+            " joggers",
+            " sweatpants",
+            " sweatpant",
+            "tracksuits",
+            "track suits"
+        ],
+        [
+            "short",
+            " shorts"
+        ],
+        [
+            "top",
+            " tops"
+        ],
+        [
+            "boy",
+            " boys"
+        ],
+        [
+            "girl",
+            " girls"
+        ],
+        [
+            "trouser",
+            " trousers",
+            " pant",
+            " pants",
+            " tracksuit",
+            " tracksuits"
+        ],
+        [
+            "hats",
+            " hat",
+            " beanie",
+            " cap",
+            " caps",
+            " new era"
+        ],
+        [
+            "accessory",
+            " accessories"
+        ],
+        [
+            "sock",
+            " socks"
+        ],
+        [
+            "bottle",
+            " bottles"
+        ],
+        [
+            "lace",
+            " laces",
+            " shoe lace",
+            " shoe laces"
+        ],
+        [
+            "mocha",
+            " shoes",
+            "moch"
+        ],
+        [
+            "backpack",
+            " backpacks",
+            " shoulder bag",
+            " shoulder bags",
+            " bag",
+            " bags",
+            " tote",
+            " totes",
+            " pack",
+            " packs",
+            " fanny",
+            " pack",
+            " hip pack",
+            " waist bag",
+            " waistbag"
+        ],
+        [
+            "brief",
+            " briefs",
+            " underwear",
+            " underclothes"
+        ],
+        [
+            "bodysuit",
+            " bodysuits",
+            " body suit",
+            " body suits"
+        ],
+        [
+            "cardigan",
+            " cardigans",
+            " jacket",
+            " jackets",
+            " overcoat",
+            " overcoats"
+        ],
+        [
+            "men",
+            " mens",
+            " men\ufffds"
+        ],
+        [
+            "superstar",
+            " super star",
+            " superstars",
+            " super-star"
+        ],
+        [
+            "sprays",
+            " care",
+            " freshner",
+            " crep",
+            " cleaner",
+            " cleaners"
+        ],
+        [
+            " era",
+            " newera",
+            " new-era"
+        ],
+        [
+            "new balance",
+            " newbalance",
+            " new-balance"
+        ],
+        [
+            "footlocker",
+            " foot-locker",
+            " foot locker"
+        ],
+        [
+            "cortez",
+            " shoes"
+        ],
+        [
+            "Nike TN",
+            " TN",
+            " Nike Tuner",
+            " Tuner",
+            " Nike Tune",
+            " Tune",
+            " tuned",
+            " niketune"
+        ],
+        [
+            "Vapormax",
+            " Vapor max",
+            " vapor-max"
+        ],
+        [
+            "ultraboost",
+            " ultra boost",
+            " ultra-boost"
+        ],
+        [
+            "airforce",
+            " air-force",
+            " air force"
+        ],
+        [
+            "hoodie",
+            " hoodies"
+        ],
+        [
+            "women",
+            " womens",
+            " ladies",
+            " woman",
+            " women's"
+        ],
+        [
+            "t-shirt",
+            " t-shirts",
+            " tee",
+            " tees",
+            " jersey",
+            " jerseys",
+            " Tshirt",
+            " Tshirts",
+            " shirt",
+            " shirts",
+            " top",
+            " tops"
+        ],
+        [
+            "Airmax",
+            " Air max",
+            " Air-max"
+        ],
+        [
+            "sweatshirt",
+            " sweat shirt",
+            " sweat-shirt",
+            " sweatshirts",
+            " sweater",
+            " swaters"
+        ],
+        [
+            "shoe",
+            " shoes",
+            " sneaker",
+            " sneakers",
+            " trainer",
+            " trainers",
+            " kicks"
+        ],
+        [
+            "sb dunk",
+            " dunk"
+        ],
+        [
+            "nike",
+            " kobe"
+        ],
+        [
+            "legging",
+            "leggings",
+            "tights",
+            "yoga tights"
+        ]
+    ],
+    "ranking": [
+        "desc(stock)",
+        "attribute",
+        "typo",
+        "geo",
+        "words",
+        "filters",
+        "proximity",
+        "exact",
+        "custom"
+    ],
+    "customRanking": [
+        "desc(new_arrivals)",
+        "desc(stock_quantity)"
+    ],
+    "separatorsToIndex": "",
+    "removeWordsIfNoResults": "lastWords",
+    "queryType": "prefixLast",
+    "highlightPreTag": "<em>",
+    "highlightPostTag": "</em>",
+    "snippetEllipsisText": "",
+    "alternativesAsExact": [
+        "ignorePlurals",
+        "singleWordSynonym"
+    ]
+}

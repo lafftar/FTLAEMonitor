@@ -1,100 +1,201 @@
-"""
-Queries just for shoes. If any new items that weren't there before. Push.
-
-"""
-
+import asyncio
+from copy import deepcopy
 from datetime import datetime
 from json import loads, load, dumps
+from pprint import pprint
+from time import sleep
+
+import aiohttp
+from colorama import Fore, init
 
 import httpx
 import requests
 
+from utils.custom_logger import logger
+from utils.global_vars import GLOBAL
 from utils.tools import print_req_info
+from utils.webhook import send_webhook
 
-headers = {
-    'Connection': 'keep-alive',
-    'x-algolia-agent':
-        'Algolia for JavaScript (3.35.1); Browser (lite); react (16.9.0); react-instantsearch (5.7.0); '
-        'JS Helper (2.28.0)',
-    'x-algolia-application-id': '3JYJSOXZO1',
-    'x-algolia-api-key': '2da2a6f7496eed8347cd476da1a006b0'
-}
+init()
 
-params = (
-    ('x-algolia-agent',
-     'Algolia for JavaScript (3.35.1); Browser (lite); react (16.9.0); react-instantsearch (5.7.0); JS Helper (2.28.0)'),
-    ('x-algolia-application-id', '3JYJSOXZO1'),
-    ('x-algolia-api-key', '2da2a6f7496eed8347cd476da1a006b0'),
-)
-facets = ["final_price.en", "attr_size_shoe_eu.en"]
 
-# @todo - we can search the entire thing in here with more `requests` items.
-# @todo - we can use `filters` to just search for shoes. Then search for changes.
-    # all in one req. Could have like 10s retry.
-json = {
-    "requests": [
-        {
-            "indexName": "01live_flae_en",
-            "params": 'query='
-                      '&hitsPerPage=999'
-                      '&page=0'
-            '&filters='
-                      '(field_category_name.lvl1: "Men\'s > Shoes") OR'
-                      '(field_category_name.lvl1: "Women\'s > Shoes") OR'
-                      '(field_category_name.lvl2: "Kids\' > 8+ Years > Shoes") OR'
-                      '(field_category_name.lvl2: "Kids\' > 4 to 8 Years > Shoes") OR'
-                      '(field_category_name.lvl2: "Kids\' > Upto 4 Years > Shoes")'
-
+class AlgoliaStuff:
+    def __init__(self):
+        self.headers = {
+            'Connection': 'keep-alive'
         }
-    ]
-}
+
+        self.params = {
+            'x-algolia-agent':
+                'Algolia for JavaScript (3.35.1); Browser (lite); react (16.9.0); '
+                'react-instantsearch (5.7.0); JS Helper (2.28.0)',
+            'x-algolia-application-id': '3JYJSOXZO1',
+            'x-algolia-api-key': '2da2a6f7496eed8347cd476da1a006b0'
+        }
+
+        not_filters = '(NOT field_category_name.lvl1: "Men\'s > Shoes") AND' \
+                      '(NOT field_category_name.lvl1: "Women\'s > Shoes") AND' \
+                      '(NOT field_category_name.lvl2: "Kids\' > 8+ Years > Shoes") AND' \
+                      '(NOT field_category_name.lvl2: "Kids\' > 4 to 8 Years > Shoes") AND' \
+                      '(NOT field_category_name.lvl2: "Kids\' > Upto 4 Years > Shoes")'
+
+        filters = '(field_category_name.lvl1: "Men\'s > Shoes") OR' \
+                  '(field_category_name.lvl1: "Women\'s > Shoes") OR' \
+                  '(field_category_name.lvl2: "Kids\' > 8+ Years > Shoes") OR' \
+                  '(field_category_name.lvl2: "Kids\' > 4 to 8 Years > Shoes") OR' \
+                  '(field_category_name.lvl2: "Kids\' > Upto 4 Years > Shoes")'
+
+        base_payload = {
+            "requests": [
+                {
+                    "indexName": "01live_flae_en",
+                    "params": 'query=shoes'
+                              '&hitsPerPage=1000'
+                              '&page=0'
+                }
+            ]
+        }
+
+        # page 0, filters
+        self.payload_1 = deepcopy(base_payload)
+        self.payload_1["requests"][0]["params"] += f'&filters={filters}'
+
+        # page 1, filters
+        self.payload_2 = deepcopy(base_payload)
+        self.payload_2["requests"][0]["params"] = self.payload_2["requests"][0]["params"] \
+            .replace('page=0', 'page=1')
+        self.payload_2["requests"][0]["params"] += f'&filters={filters}'
+
+        # page 0, no filters
+        self.payload_3 = deepcopy(base_payload)
+        self.payload_3["requests"][0]["params"] += f'&filters={not_filters}'
+
+        # page 1, no filters
+        self.payload_4 = deepcopy(base_payload)
+        self.payload_4["requests"][0]["params"] = self.payload_4["requests"][0]["params"] \
+            .replace('page=0', 'page=1')
+        self.payload_4["requests"][0]["params"] += f'&filters={not_filters}'
 
 
-def send_req():
-    out = []
-
-    # get data from both pages
-    for num in range(2):
-        json["requests"][0]["params"] = json["requests"][0]["params"].replace('&page=0', f'&page={num}')
-        response = httpx.post('https://3jyjsoxzo1-dsn.algolia.net/1/indexes/*/queries',
-                              headers=headers,
-                              params=params,
-                              json=json)
-        print_req_info(response, False, False)
-        js = response.json()
-        hits = js['results'][0]['hits']
-        out += [f"{_dict['title']}, https://www.footlocker.ae{_dict['url']}" for _dict in hits]
-
-    # write data to file
-    out = "\n".join(out)
-    with open('out.txt', 'w', encoding='utf-8') as file:
-        file.write(out)
+class Hold:
+    def __init__(self):
+        self.num_results: int = 0
+        self.old_results: dict = {}
+        """
+        self.old_results
+        key: value
+        url: {
+                    'URL': url,
+                    'TITLE': title,
+                    'SKU': sku,
+                    'PRICE': price
+                }
+        """
 
 
-def parser():
-    with open('src.json') as file:
-        js = load(file)
+H = Hold()
+Alg = AlgoliaStuff()
 
-    print(len(js['results'][0]['hits']))
+
+async def send_req(payload: dict, client: httpx.AsyncClient, current: dict):
+    response = await client.post(
+        'https://3jyjsoxzo1.algolia.net/1/indexes/*/queries',
+        headers=Alg.headers,
+        params=Alg.params,
+        json=payload
+    )
+    print_req_info(response, False, False)
+
+    # parse results
+    js = response.json()
     hits = js['results'][0]['hits']
     for _dict in hits:
-        # if _dict['is_buyable']:
-        #     continue
-        title = _dict['title']
-        new_arrivals = datetime.utcfromtimestamp(
-            int(_dict['changed'])
-        ).strftime('%A, %B %d, %Y %H:%M:%S')
-        # if int(_dict['stock_quantity']) != 1:
-        #     continue
-
-        # print(type(_dict['is_buyable']['en']))
         url = f"https://www.footlocker.ae{_dict['url']}"
-        stock = _dict["stock_quantity"]
-        _stock = _dict["stock"]
-        # print(_dict)
-        # print(_dict['is_new']['en'], _dict['is_buyable']['en'], stock, url)
-        print(stock, _stock, new_arrivals, title, url)
+        title = _dict['title']
+        price = _dict['final_price']
+        sku = _dict['sku']
+        stock = _dict['stock_quantity']
+        try:
+            image_url = _dict['media'][1]['url']
+        except IndexError:
+            image_url = _dict['media'][0]['url']
+        current[url] = {
+            'URL': url,
+            'TITLE': title,
+            'SKU': sku,
+            'PRICE': price,
+            'IMAGE_LINK': image_url,
+            'STOCK_QUANTITY': stock
+        }
 
 
-send_req()
-# parser()
+async def send_webhooks(_dict: dict, message: str = 'NO_REPEAT'):
+    client = aiohttp.ClientSession()
+    try:
+        await asyncio.gather(*
+                             (send_webhook(_dict=_dict,
+                                           url=url,
+                                           webhook_client=client,
+                                           message=message)
+                              for url in GLOBAL.webhooks
+                              )
+                             )
+    finally:
+        await client.close()
+
+
+async def check():
+    current = dict()
+    client = httpx.AsyncClient()
+    # get data from both pages
+    try:
+        await asyncio.gather(send_req(Alg.payload_1, client, current),
+                             send_req(Alg.payload_2, client, current),
+                             send_req(Alg.payload_3, client, current),
+                             send_req(Alg.payload_4, client, current))
+    finally:
+        await client.aclose()
+
+    if H.old_results:
+        current_urls = set(current.keys())
+        old_urls = set(H.old_results.keys())
+
+        """
+        current - old = new item
+        old - current = item pulled
+        """
+
+        new_items = current_urls - old_urls
+        pulled_items = old_urls - current_urls
+
+        if new_items:
+            logger().info(f'{len(new_items)} new items found!')
+            await asyncio.gather(*
+                                 (
+                                     send_webhooks(_dict=current[url], message='NO_REPEAT')
+                                     for url in new_items
+                                 )
+                                 )
+
+        if pulled_items:
+            logger().info(f'{len(pulled_items)} pulled items found!')
+            await asyncio.gather(*
+                                 (
+                                     send_webhooks(_dict=current[url], message='PULLED')
+                                     for url in pulled_items
+                                 )
+                                 )
+
+    H.old_results = current
+    logger().debug(f'Checked. {len(H.old_results)}')
+    return
+
+
+async def run():
+    while True:
+        await check()
+        sleep(30)
+
+
+if __name__ == "__main__":
+    asyncio.run(run())

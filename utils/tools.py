@@ -18,7 +18,7 @@ from utils.root import get_project_root
 from utils.global_vars import GLOBAL
 
 init()
-system("cls")
+system("cls" or "clear")
 FIRST_PRINT = False
 FAKE = Faker()
 
@@ -32,7 +32,7 @@ def print_req_info(res: httpx.Response, print_headers: bool = False, print_body:
         try:
             with open(f'{get_project_root()}/src.json', mode='w', encoding='utf-8') as file:
                 file.write(dumps(res.json(), indent=4))
-                print('wrote json')
+                # print('wrote json')
         except JSONDecodeError:
             file.write(res.text)
     if not print_headers:
