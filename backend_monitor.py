@@ -93,13 +93,21 @@ Alg = AlgoliaStuff()
 
 
 async def send_req(payload: dict, client: httpx.AsyncClient, current: dict):
-    response = await client.post(
-        'https://3jyjsoxzo1.algolia.net/1/indexes/*/queries',
-        headers=Alg.headers,
-        params=Alg.params,
-        json=payload
-    )
-    print_req_info(response, False, False)
+    while True:
+        try:
+            response = await client.post(
+                'https://3jyjsoxzo1.algolia.net/1/indexes/*/queries',
+                headers=Alg.headers,
+                params=Alg.params,
+                json=payload
+            )
+            print_req_info(response, False, False)
+            break
+        except (httpx.ConnectTimeout, httpx.ProxyError, httpx.ConnectError,
+                httpx.ReadError, httpx.ReadTimeout, httpx.WriteTimeout, httpx.RemoteProtocolError,
+                httpx.ProxyError):
+            logger().exception('Error')
+            await sleep(2)
 
     # parse results
     js = response.json()
@@ -176,7 +184,7 @@ async def check():
             logger().info(f'{len(pulled_items)} pulled items found!')
             await asyncio.gather(*
                                  (
-                                     send_webhooks(_dict=current[url], message='PULLED')
+                                     send_webhooks(_dict=H.old_results[url], message='PULLED')
                                      for url in pulled_items
                                  )
                                  )
@@ -199,7 +207,11 @@ async def check_forever():
 
 
 async def run():
-    await asyncio.gather(check_auth(), check_forever())
+    try:
+        await asyncio.gather(check_auth(), check_forever())
+    except Exception:
+        logger().exception('Please contact @winwinwinwin#0001 on discord.')
+        input()
 
 
 if __name__ == "__main__":
