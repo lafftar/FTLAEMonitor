@@ -11,3 +11,7 @@
 *.manifest
 *.xml
 *.xml
+/build/
+/dist/
+/logs/
+/FTLAEMonitor.zip
