@@ -207,11 +207,12 @@ async def check_forever():
 
 
 async def run():
-    try:
-        await asyncio.gather(check_auth(), check_forever())
-    except Exception:
-        logger().exception('Please contact @winwinwinwin#0001 on discord.')
-        input()
+    while True:
+        try:
+            await asyncio.gather(check_auth(), check_forever())
+        except Exception:
+            logger().exception('\n\n\n\n\nPlease contact @winwinwinwin#0001 on discord.\n\n\n\n\n')
+            await sleep(5)
 
 
 if __name__ == "__main__":
