@@ -3,6 +3,10 @@ from datetime import datetime
 from os import makedirs
 
 from utils.root import get_project_root
+import shutil
+
+
+shutil.rmtree(f'{get_project_root()}/logs', ignore_errors=True)
 
 
 class CustomFormatter(logging.Formatter):

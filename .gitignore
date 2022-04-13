@@ -15,3 +15,8 @@
 /dist/
 /logs/
 /FTLAEMonitor.zip
+**__pycache__**
+logs/
+src.html
+src.json
+**.log
