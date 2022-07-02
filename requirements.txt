@@ -1,9 +1,6 @@
 aiohttp~=3.7.4.post0
-httpcore~=0.13.7
-httpx~=1.0.0b0
+httpcore~=0.15.0
+httpx~=0.23.0
 colorama~=0.4.4
-Faker~=8.14.0
+Faker~=13.14.0
 discord~=1.7.3
-ray~=1.7.1
-bs4~=0.0.1
-beautifulsoup4~=4.9.3
