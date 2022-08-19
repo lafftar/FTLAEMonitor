@@ -1,12 +1,28 @@
+import asyncio
 import logging
 from datetime import datetime
 from os import makedirs
 
 from utils.root import get_project_root
-import shutil
+from utils.terminal import update_title
 
 
-shutil.rmtree(f'{get_project_root()}/logs', ignore_errors=True)
+LOGGING_LEVEL = logging.DEBUG  # @todo - change this in production to .INFO, maybe
+
+class Log:
+    def __init__(self, fmt: str = '[ACC CREATE]', do_update_title: bool = True):
+        self.fmt = fmt.rjust(15)
+        self.do_update_title = do_update_title
+
+    def update_title(self, text):
+        if self.do_update_title:
+            update_title(f'{self.fmt}: {text}')
+
+    def info(self, text): logger().info(f'{self.fmt}: {text}') or self.update_title(f'{self.fmt}: {text}')
+    def warn(self, text): logger().warning(f'{self.fmt}: {text}') or self.update_title(f'{self.fmt}: {text}')
+    def debug(self, text): logger().debug(f'{self.fmt}: {text}') or self.update_title(f'{self.fmt}: {text}')
+    def error(self, text): logger().error(f'{self.fmt}: {text}') or self.update_title(f'{self.fmt}: {text}')
+    def exception(self, text): logger().exception(f'{self.fmt}: {text}')
 
 
 class CustomFormatter(logging.Formatter):
@@ -57,7 +73,7 @@ def logger(error_logs_path: str = 'logs/error_logs',
         makedirs(fr'{get_project_root()}/{all_logs_path}', exist_ok=True)
         file_handler = logging.FileHandler(fr'{get_project_root()}/{all_logs_path}/all.log')
 
-    stream_handler.setLevel(logging.DEBUG)  # this should be on .INFO level for production
+    stream_handler.setLevel(LOGGING_LEVEL)  # this should be on .INFO level for production
     error_handler.setLevel(logging.ERROR)
     file_handler.setLevel(logging.DEBUG)
 
@@ -76,3 +92,19 @@ def logger(error_logs_path: str = 'logs/error_logs',
         logger.addHandler(error_handler)
 
     return logger
+
+
+if __name__ == "__main__":
+    from random import randint
+    from asyncio import sleep
+
+    async def one_print(num: int):
+        log = Log(f'[{num}]', do_update_title=False)
+        for _ in range(2):
+            log.debug('Hello.')
+            await sleep(randint(1, 3))
+
+    async def multi():
+        await asyncio.gather(*(one_print(num) for num in range(10)))
+
+    asyncio.run(multi())

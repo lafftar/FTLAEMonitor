@@ -1,8 +1,10 @@
 import asyncio
 from asyncio import sleep
-from discord import Colour, Embed, AsyncWebhookAdapter, Webhook
+import discord
 
-from utils.custom_logger import logger
+from utils.custom_logger import Log
+
+log = Log('[WEBHOOK MGR]', do_update_title=False)
 
 
 async def send_webhook(_dict, url, webhook_client, message='NO_REPEAT'):
@@ -14,21 +16,21 @@ async def send_webhook(_dict, url, webhook_client, message='NO_REPEAT'):
     stock = _dict['STOCK_QUANTITY']
 
     # sending webhook
-    webhook = Webhook.from_url(
+    webhook = discord.Webhook.from_url(
         url=url,
-        adapter=AsyncWebhookAdapter(webhook_client))
+        adapter=discord.AsyncWebhookAdapter(webhook_client))
 
     # create embed
     title = 'Product Live!'
-    color = Colour.green()
+    color = discord.Colour.green()
     if message == 'REPEAT':
         title = 'Product Live! (Reminder)'
-        color = Colour.dark_green()
+        color = discord.Colour.dark_green()
     elif message == 'PULLED':
         title = 'Product Pulled!'
-        color = Colour.dark_orange()
+        color = discord.Colour.dark_orange()
 
-    embed = Embed(title=product_name, color=color, url=link)
+    embed = discord.Embed(title=product_name, color=color, url=link)
     embed.set_footer(text='WINX4 Bots | winwinwinwin#0001',
                      icon_url='https://images6.alphacoders.com/909/thumb-1920-909641.png')
     embed.set_thumbnail(url=image_link)
@@ -37,7 +39,7 @@ async def send_webhook(_dict, url, webhook_client, message='NO_REPEAT'):
     embed.add_field(name='Stock', value=f'{stock}', inline=False)
     embed.add_field(name='SKU', value=f'{sku}', inline=False)
 
-    while True:
+    for _ in range(3):
         try:
             await webhook.send(username='FTL.AE Monitor',
                                avatar_url=
@@ -45,35 +47,37 @@ async def send_webhook(_dict, url, webhook_client, message='NO_REPEAT'):
                                '0002/5414/brand.gif?itok=c0LjV97s',
                                embed=embed,
                                )
-            logger().info('Sent Webhook')
+            log.info('Sent Webhook')
             break
         except Exception:
-            logger().exception('Webhook Failed')
+            log.exception('Webhook Failed')
             await sleep(2)
+
+    log.debug(f'Could not send webhook to url: \n[{url}]')
 
 
 async def send_err_webhook():
-    embed = Embed(title='Error', color=Colour.red())
+    embed = discord.Embed(title='Error', color=discord.Colour.red())
     embed.add_field(name='Status', value='Fuck.')
     embed.set_thumbnail(url='https://i.gyazo.com/98e5097c2adccb00a43c89b6038c94ee.png')
 
     for _ in range(3):
         try:
             async with aiohttp.ClientSession() as webhook_client:
-                webhook = Webhook.from_url(
+                webhook = discord.Webhook.from_url(
                     url='https://discord.com/api/webhooks/927893447808008273/'
                         'UlFfNapvHqzB2z4D_D_RPXgXRmRufwOcKTO3zZ6UaI8T-_mPQQx4UbaaIy6xTgIN_-eY',
-                    adapter=AsyncWebhookAdapter(webhook_client))
+                    adapter=discord.AsyncWebhookAdapter(webhook_client))
                 await webhook.send(username='FTL.AE Monitor - Early#0001',
                                    avatar_url=
                                    'https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/'
                                    '0002/5414/brand.gif?itok=c0LjV97s',
                                    embed=embed,
                                    )
-                logger().info('Sent Error Webhook to #winx4')
+                log.info('Sent Error Webhook to #winx4')
             return
         except Exception:
-            logger().exception('Webhook Failed')
+            log.exception('Webhook Failed')
             await sleep(2)
 
 
