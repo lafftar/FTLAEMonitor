@@ -29,8 +29,8 @@ async def send_webhook(_dict, url, webhook_client, message='NO_REPEAT'):
         color = Colour.dark_orange()
 
     embed = Embed(title=product_name, color=color, url=link)
-    embed.set_footer(text='Cookbeast | Footlocker.ae',
-                     icon_url='https://i.imgur.com/qrDSagP.jpg')
+    embed.set_footer(text='WINX4 Bots | winwinwinwin#0001',
+                     icon_url='https://images6.alphacoders.com/909/thumb-1920-909641.png')
     embed.set_thumbnail(url=image_link)
     embed.add_field(name='Status', value=title, inline=False)
     embed.add_field(name='Price', value=f'{price} AED', inline=False)
